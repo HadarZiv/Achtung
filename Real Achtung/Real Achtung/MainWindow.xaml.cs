@@ -23,6 +23,25 @@ namespace Real_Achtung
         public MainWindow()
         {
             InitializeComponent();
+            TryMe();
+        }
+
+        private void TryMe()
+        {
+            Random r = new Random();
+            int x = r.Next(1, 500);
+            int y = r.Next(1, 500);
+            for (int i = 0; i <= 5; i++)
+            {
+                Ellipse e = new Ellipse();
+                e.Fill = Brushes.Yellow;
+                e.Height = 10;
+                e.Width = 10;
+                Canvas.SetTop(e, y);
+                Canvas.SetLeft(e, x);
+                MyCanvas.Children.Add(e);
+            }
+
         }
     }
 }
