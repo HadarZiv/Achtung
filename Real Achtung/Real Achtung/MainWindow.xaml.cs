@@ -20,6 +20,7 @@ namespace Real_Achtung
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Player> players;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,20 +29,46 @@ namespace Real_Achtung
 
         private void TryMe()
         {
+            players = new List<Player>();
+            players.Add(new Player('w', 'r', "hadar", "#FF0000"));
+            players.Add(new Player('g', 'h', "kobi", "#00FF00"));
             Random r = new Random();
-            int x = r.Next(1, 500);
-            int y = r.Next(1, 500);
-            for (int i = 0; i <= 5; i++)
+
+            for (int i = 0; i < players.Count; i++)
             {
+                int x = r.Next(1, 500);
+                int y = r.Next(1, 500);
                 Ellipse e = new Ellipse();
-                e.Fill = Brushes.Yellow;
                 e.Height = 10;
                 e.Width = 10;
+                if (i == 0)
+                {
+                    e.Fill = Brushes.Yellow;
+                }
+                else
+                    e.Fill = Brushes.Blue;
                 Canvas.SetTop(e, y);
                 Canvas.SetLeft(e, x);
                 MyCanvas.Children.Add(e);
             }
 
+
+        }
+        public class Player
+        {
+            int points;
+            char left;
+            char right;
+            string name;
+            string color;
+            public Player(char l, char r, string name, string color)
+            {
+                this.left = l;
+                this.right = r;
+                this.name = name;
+                this.color = color;
+                this.points = 0;
+            }
         }
     }
 }
